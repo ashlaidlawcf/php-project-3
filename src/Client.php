@@ -91,5 +91,16 @@
 
             return $found_client;
         }
+
+        function updateFirstName($new_first_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE clients SET first_name = '{$new_first_name}' WHERE id = {$this->getId()};");
+            $this->setFirstName($new_first_name);
+        }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
+        }
     }
 ?>
