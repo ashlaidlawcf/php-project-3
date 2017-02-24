@@ -47,6 +47,7 @@ To run this web app, please follow the instructions below.
 | 3. Method to return all stylists | GetAll method | Output should return all stylists as objects |
 | 4. Method to find particular stylist | ID: 4 | Stylist with ID of 4 |
 | 5. Method to change stylist's information | Number: "123-456-7890" | New Number: "234-567-8901" |
+| 6. Method to delete a stylist | Delete single stylist method | Removes a single stylist from database |
 
 ## Known Bugs
 * No known bugs

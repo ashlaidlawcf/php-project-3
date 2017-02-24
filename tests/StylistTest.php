@@ -18,7 +18,7 @@
                 Stylist::deleteAllStylists();
             }
 
-            function test_saveStylist()
+            function test_save()
             {
                 // Arrange
                 $first_name = "John";
@@ -27,30 +27,30 @@
                 $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
 
                 // Act
-                $test_stylist->saveStylist();
+                $test_stylist->save();
 
                 // Assert
-                $result = Stylist::getAllStylists();
+                $result = Stylist::getAll();
                 $this->assertEquals($test_stylist, $result[0]);
             }
 
-            function test_getAllStylists()
+            function test_getAll()
             {
                 // Arrange
                 $first_name = "John";
                 $last_name = "Smith";
                 $phone_number = 1234567890;
                 $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
-                $test_stylist->saveStylist();
+                $test_stylist->save();
 
                 $first_name2 = "Lucy";
                 $last_name2 = "Jones";
                 $phone_number2 = 1234567890;
                 $test_stylist2 = new Stylist($id, $first_name2, $last_name2, $phone_number2);
-                $test_stylist2->saveStylist();
+                $test_stylist2->save();
 
                 // Act
-                $result = Stylist::getAllStylists();
+                $result = Stylist::getAll();
 
                 // Assert
                 $this->assertEquals([$test_stylist, $test_stylist2], $result);
@@ -63,19 +63,19 @@
                 $last_name = "Smith";
                 $phone_number = 1234567890;
                 $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
-                $test_stylist->saveStylist();
+                $test_stylist->save();
 
                 $first_name2 = "Lucy";
                 $last_name2 = "Jones";
                 $phone_number2 = 1234567890;
                 $test_stylist2 = new Stylist($id, $first_name2, $last_name2, $phone_number2);
-                $test_stylist2->saveStylist();
+                $test_stylist2->save();
 
                 //Act
-                Stylist::deleteAllStylists();
+                Stylist::deleteAll();
 
                 //Assert
-                $result = Stylist::getAllStylists();
+                $result = Stylist::getAll();
                 $this->assertEquals([], $result);
             }
 
@@ -86,10 +86,10 @@
                 $last_name = "Smith";
                 $phone_number = 1234567890;
                 $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
-                $test_stylist->saveStylist();
+                $test_stylist->save();
 
                 //Act
-                $result = $test_stylist->getStylistId();
+                $result = $test_stylist->getId();
 
                 //Assert
                 $this->assertEquals($result, $result);
@@ -102,20 +102,61 @@
                 $last_name = "Smith";
                 $phone_number = 1234567890;
                 $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
-                $test_stylist->saveStylist();
+                $test_stylist->save();
 
                 $first_name2 = "Lucy";
                 $last_name2 = "Jones";
                 $phone_number2 = 1234567890;
                 $test_stylist2 = new Stylist($id, $first_name2, $last_name2, $phone_number2);
-                $test_stylist2->saveStylist();
+                $test_stylist2->save();
 
                 //Act
-                $id = $test_stylist->getStylistId();
+                $id = $test_stylist->getId();
                 $result = Stylist::find($id);
 
                 //Assert
                 $this->assertEquals($test_stylist, $result);
+            }
+
+            function testUpdateFirstName()
+            {
+                //Arrange
+                $first_name = "John";
+                $last_name = "Smith";
+                $phone_number = 1234567890;
+                $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+                $test_stylist->save();
+
+                $new_first_name = "Jake";
+
+                //Act
+                $test_stylist->updateFirstName($new_first_name);
+
+                //Assert
+                $this->assertEquals("Jake", $test_stylist->getFirstName());
+            }
+
+            function testDeleteStylist()
+            {
+                //Arrange
+                $first_name = "John";
+                $last_name = "Smith";
+                $phone_number = 1234567890;
+                $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+                $test_stylist->save();
+
+                $first_name2 = "Lucy";
+                $last_name2 = "Jones";
+                $phone_number2 = 1234567890;
+                $test_stylist2 = new Stylist($id, $first_name2, $last_name2, $phone_number2);
+                $test_stylist2->save();
+
+
+                //Act
+                $test_stylist->delete();
+
+                //Assert
+                $this->assertEquals([$test_stylist2], Stylist::getAll());
             }
         }
 ?>
