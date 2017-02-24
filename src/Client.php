@@ -71,5 +71,10 @@
 
             return $clients;
         }
+
+        static function deleteAll()
+        {
+            $GLOBALS["DB"]->exec("DELETE FROM clients;");
+        }
     }
 ?>
