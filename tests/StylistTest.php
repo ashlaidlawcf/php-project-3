@@ -82,17 +82,17 @@
             function test_getStylistId()
             {
                 //Arrange
+                $id = 1;
                 $first_name = "John";
                 $last_name = "Smith";
                 $phone_number = 1234567890;
                 $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
-                $test_stylist->save();
 
                 //Act
                 $result = $test_stylist->getId();
 
                 //Assert
-                $this->assertEquals($result, $result);
+                $this->assertEquals(1, $result);
             }
 
             function test_find()
