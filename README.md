@@ -48,6 +48,8 @@ To run this web app, please follow the instructions below.
 | 4. Method to find particular stylist | ID: 4 | Stylist with ID of 4 |
 | 5. Method to change stylist's information | Number: "123-456-7890" | New Number: "234-567-8901" |
 | 6. Method to delete a stylist | Delete single stylist method | Removes a single stylist from database |
+| 7. Add index page to allow user to add stylists to the database | Stylist | Show Stylist's information |
+| 8. Repeat steps 1 - 6 for the Client class | N/A | N/A |
 
 ## Known Bugs
 * No known bugs
