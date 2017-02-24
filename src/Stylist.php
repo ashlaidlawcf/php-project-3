@@ -114,5 +114,23 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
         }
+
+        function getClients()
+        {
+            $clients = Array();
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE category_id = {$this->getId()};");
+
+            foreach($returned_clients as $client) {
+                $id = $client["id"];
+                $first_name = $client["first_name"];
+                $last_name = $client["last_name"];
+                $phone_number = $client["phone_number"];
+                $stylist_id = $client["stylist_id"];
+                $new_client= new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
+                array_push($clients, $new_client);
+            }
+
+            return $clients;
+        }
     }
 ?>

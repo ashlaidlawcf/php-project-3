@@ -5,18 +5,25 @@
         private $first_name;
         private $last_name;
         private $phone_number;
+        private $stylist_id;
 
-        function __construct($id = null, $first_name, $last_name, $phone_number)
+        function __construct($id = null, $first_name, $last_name, $phone_number, $stylist_id)
         {
             $this->id = $id;
             $this->first_name = $first_name;
             $this->last_name = $last_name;
             $this->phone_number = $phone_number;
+            $this->stylist_id = $stylist_id;
         }
 
         function getId()
         {
             return $this->id;
+        }
+
+        function getStylistId()
+        {
+            return $this->stylist_id;
         }
 
         function setFirstName($new_first_name)
@@ -51,7 +58,7 @@
 
         function save()
         {
-            $GLOBALS["DB"]->exec("INSERT INTO clients (first_name, last_name, phone_number) VALUES ('{$this->getFirstName()}', '{$this->getLastName()}', {$this->getPhoneNumber()});");
+            $GLOBALS["DB"]->exec("INSERT INTO clients (first_name, last_name, phone_number) VALUES ('{$this->getFirstName()}', '{$this->getLastName()}', {$this->getPhoneNumber()}, {$this->getStylistId()});");
             $this->id = $GLOBALS["DB"]->lastInsertId();
         }
 
@@ -65,7 +72,8 @@
                 $first_name = $client["first_name"];
                 $last_name = $client["last_name"];
                 $phone_number = $client["phone_number"];
-                $test_client = new Client($id, $first_name, $last_name, $phone_number);
+                $stylist_id = $client["stylist_id"];
+                $test_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
                 array_push($clients, $test_client);
             }
 
