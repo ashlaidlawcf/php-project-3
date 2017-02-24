@@ -80,7 +80,7 @@
         static function find($search_id)
         {
             $found_stylist = null;
-            $stylists = Stylist::getAllStylists();
+            $stylists = Stylist::getAll();
 
             foreach($stylists as $stylist) {
                 $stylist_id = $stylist->getId();
@@ -94,25 +94,25 @@
 
         function updateFirstName($new_first_name)
         {
-            $GLOBALS['DB']->exec("UPDATE stylists SET first_name = '{$new_first_name}' WHERE id = {$this->getStylistId()};");
+            $GLOBALS['DB']->exec("UPDATE stylists SET first_name = '{$new_first_name}' WHERE id = {$this->getId()};");
             $this->setFirstName($new_first_name);
         }
 
         function updateLastName($new_last_name)
         {
-            $GLOBALS['DB']->exec("UPDATE stylists SET last_name = '{$new_last_name}' WHERE id = {$this->getStylistId()};");
+            $GLOBALS['DB']->exec("UPDATE stylists SET last_name = '{$new_last_name}' WHERE id = {$this->getId()};");
             $this->setLastName($new_last_name);
         }
 
         function updatePhoneNumber($new_number)
         {
-            $GLOBALS['DB']->exec("UPDATE stylists SET phone_number = {$new_number} WHERE id = {$this->getStylistId()};");
+            $GLOBALS['DB']->exec("UPDATE stylists SET phone_number = {$new_number} WHERE id = {$this->getId()};");
             $this->setPhoneNumber($new_number);
         }
 
         function delete()
         {
-            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getStylistId()};");
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
         }
     }
 ?>

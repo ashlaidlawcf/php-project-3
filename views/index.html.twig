@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <meta charset="utf-8">
+        <title>My Hair Salon</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="jumbotron">My Hair Salon</h1>
+            <h4>Welcome to your Hair Salon.</h4>
+
+            {% if stylists is not empty %}
+            <h4>List of stylists:</h4>
+            <ul>
+                {% for stylist in stylists %}
+                    <li>{{ stylist.getFirstName }}</li>
+                        <ul>
+                            <li>{{ stylist.getLastName }}</li>
+                            <li>{{ stylist.getPhoneNumber }}</li>
+                        </ul>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h4>No stylists in database. Please add one or more stylists.</h4>
+            {% endif %}
+
+            <form method="post" action="/add_stylist">
+                <div class="form-group">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" name="first_name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" name="last_name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone_number">Phone Number (no spaces or dashes):</label>
+                    <input type="text" name="phone_number" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn">Add Stylist</button><br>
+            </form>
+
+            <form method="post" action="delete_all_stylists">
+                <button type="submit" class="btn">Delete All Stylists</button>
+            </form>
+        </div>
+    </body>
+</html>

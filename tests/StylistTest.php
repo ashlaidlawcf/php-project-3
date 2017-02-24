@@ -15,7 +15,7 @@
         {
             protected function tearDown()
             {
-                Stylist::deleteAllStylists();
+                Stylist::deleteAll();
             }
 
             function test_save()
