@@ -6,3 +6,7 @@ li {
     list-style: inside;
     text-align: left;
 }
+
+ul:first-child {
+    font-size: 1.3em;
+}

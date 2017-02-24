@@ -28,5 +28,10 @@
         return $app["twig"]->render("index.html.twig", array("stylists" => Stylist::getAll()));
     });
 
+    $app->get("/stylists/{id}", function($id) use ($app) {
+        $new_stylist = Stylist::find($id);
+        return $app['twig']->render('stylist.html.twig', array('stylists' => $new_stylist, 'clients' => $new_stylist->getClients()));
+    });
+
     return $app;
 ?>

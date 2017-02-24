@@ -117,7 +117,7 @@
 
         function getClients()
         {
-            $clients = Array();
+            $clients = array();
             $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE category_id = {$this->getId()};");
 
             foreach($returned_clients as $client) {
@@ -126,7 +126,7 @@
                 $last_name = $client["last_name"];
                 $phone_number = $client["phone_number"];
                 $stylist_id = $client["stylist_id"];
-                $new_client= new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
+                $new_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
                 array_push($clients, $new_client);
             }
 

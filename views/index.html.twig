@@ -39,7 +39,7 @@
                     {% if stylists is not empty %}
                     <ul>
                         {% for stylist in stylists %}
-                            <li>ID: {{stylist.getId}} | {{ stylist.getFirstName }} {{ stylist.getLastName }} | Number: {{stylist.getPhoneNumber}}</li>
+                            <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getFirstName }} {{ stylist.getLastName }}</a> | Phone Number: {{ stylist.getPhoneNumber }}</li>
                         {% endfor %}
                     </ul>
                     {% else %}
