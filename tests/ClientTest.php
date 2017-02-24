@@ -128,12 +128,12 @@
             $test_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
             $test_client->save();
 
-            $first_name = "Megan";
-            $last_name = "Johansson";
-            $phone_number = 5447751122;
+            $first_name2 = "Megan";
+            $last_name2 = "Johansson";
+            $phone_number2 = 1147751222;
             $stylist_id = $test_stylist->getId();
-            $test_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
-            $test_client->save();
+            $test_client2 = new Client($id, $first_name2, $last_name2, $phone_number2, $stylist_id);
+            $test_client2->save();
 
             //Act
             $result = Client::getAll();

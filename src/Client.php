@@ -58,7 +58,7 @@
 
         function save()
         {
-            $GLOBALS["DB"]->exec("INSERT INTO clients (first_name, last_name, phone_number) VALUES ('{$this->getFirstName()}', '{$this->getLastName()}', {$this->getPhoneNumber()}, {$this->getStylistId()});");
+            $GLOBALS["DB"]->exec("INSERT INTO clients (first_name, last_name, phone_number, stylist_id) VALUES ('{$this->getFirstName()}', '{$this->getLastName()}', {$this->getPhoneNumber()}, {$this->getStylistId()});");
             $this->id = $GLOBALS["DB"]->lastInsertId();
         }
 
