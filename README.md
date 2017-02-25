@@ -51,6 +51,14 @@ To run this web app, please follow the instructions below.
 | 7. Add index page to allow user to add stylists to the database | Stylist | Show Stylist's information |
 | 8. Repeat steps 1 - 6 for the Client class | N/A | N/A |
 
+## SQL Commands
+
+* To set up database:
+   * CREATE DATABASE hair_salon;
+   * USE hair_salon;
+   * CREATE TABLE stylists (id serial PRIMARY KEY, first_name VARCHAR (100), last_name VARCHAR (100), phone_number BIGINT);
+   * CREATE TABLE clients (id serial PRIMARY KEY, first_name VARCHAR (100), last_name VARCHAR (100), phone_number BIGINT, stylist_id INT);
+
 ## Known Bugs
 * No known bugs
 
