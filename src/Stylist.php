@@ -1,17 +1,17 @@
 <?php
     class Stylist
     {
-        private $id;
         private $first_name;
         private $last_name;
         private $phone_number;
+        private $id;
 
-        function __construct($id = null, $first_name, $last_name, $phone_number)
+        function __construct($first_name, $last_name, $phone_number, $id = null)
         {
-            $this->id = $id;
             $this->first_name = $first_name;
             $this->last_name = $last_name;
             $this->phone_number = $phone_number;
+            $this->id = $id;
         }
 
         function getId()
@@ -21,7 +21,7 @@
 
         function setFirstName($new_first_name)
         {
-            $this->first_name = $new_first_name;
+            $this->first_name = (string) $new_first_name;
         }
 
         function getFirstName()
@@ -31,7 +31,7 @@
 
         function setLastName($new_last_name)
         {
-            $this->last_name = $new_last_name;
+            $this->last_name = (string) $new_last_name;
         }
 
         function getLastName()
@@ -61,11 +61,11 @@
             $stylists = array();
 
             foreach($returned_stylists as $stylist) {
-                $id = $stylist["id"];
                 $first_name = $stylist["first_name"];
                 $last_name = $stylist["last_name"];
                 $phone_number = $stylist["phone_number"];
-                $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+                $id = $stylist["id"];
+                $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
                 array_push($stylists, $test_stylist);
             }
 
@@ -121,12 +121,12 @@
             $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
 
             foreach($returned_clients as $client) {
-                $id = $client["id"];
                 $first_name = $client["first_name"];
                 $last_name = $client["last_name"];
                 $phone_number = $client["phone_number"];
                 $stylist_id = $client["stylist_id"];
-                $new_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
+                $id = $client["id"];
+                $new_client = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
                 array_push($clients, $new_client);
             }
 

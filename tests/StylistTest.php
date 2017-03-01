@@ -26,7 +26,7 @@
                 $first_name = "John";
                 $last_name = "Smith";
                 $phone_number = 1234567890;
-                $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+                $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
 
                 // Act
                 $test_stylist->save();
@@ -42,13 +42,13 @@
                 $first_name = "John";
                 $last_name = "Smith";
                 $phone_number = 1234567890;
-                $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+                $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
                 $test_stylist->save();
 
                 $first_name2 = "Lucy";
                 $last_name2 = "Jones";
                 $phone_number2 = 1234567890;
-                $test_stylist2 = new Stylist($id, $first_name2, $last_name2, $phone_number2);
+                $test_stylist2 = new Stylist($first_name2, $last_name2, $phone_number2, $id);
                 $test_stylist2->save();
 
                 // Act
@@ -84,11 +84,11 @@
             function test_getStylistId()
             {
                 //Arrange
-                $id = 1;
                 $first_name = "John";
                 $last_name = "Smith";
                 $phone_number = 1234567890;
-                $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+                $id = 1;
+                $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
 
                 //Act
                 $result = $test_stylist->getId();
@@ -103,13 +103,13 @@
                 $first_name = "John";
                 $last_name = "Smith";
                 $phone_number = 1234567890;
-                $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+                $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
                 $test_stylist->save();
 
                 $first_name2 = "Lucy";
                 $last_name2 = "Jones";
                 $phone_number2 = 1234567890;
-                $test_stylist2 = new Stylist($id, $first_name2, $last_name2, $phone_number2);
+                $test_stylist2 = new Stylist($first_name2, $last_name2, $phone_number2, $id);
                 $test_stylist2->save();
 
                 //Act
@@ -144,21 +144,22 @@
                 $first_name = "John";
                 $last_name = "Smith";
                 $phone_number = 1234567890;
-                $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+                $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
                 $test_stylist->save();
 
                 $first_name2 = "Lucy";
                 $last_name2 = "Jones";
                 $phone_number2 = 1234567890;
-                $test_stylist2 = new Stylist($id, $first_name2, $last_name2, $phone_number2);
+                $test_stylist2 = new Stylist($first_name2, $last_name2, $phone_number2, $id);
                 $test_stylist2->save();
 
 
                 //Act
                 $test_stylist->delete();
+                $result = Stylist::getAll();
 
                 //Assert
-                $this->assertEquals([$test_stylist2], Stylist::getAll());
+                $this->assertEquals([$test_stylist2], $result);
             }
         }
 

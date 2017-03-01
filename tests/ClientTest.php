@@ -26,13 +26,13 @@
             $first_name = "John";
             $last_name = "Smith";
             $phone_number = 1234567890;
-            $test_client = new Client($id, $first_name, $last_name, $phone_number, $client_id);
+            $test_client = new Client($first_name, $last_name, $phone_number, $client_id, $id);
             $test_client->save();
 
             $first_name = "Lucy";
             $last_name = "Jones";
             $phone_number = 1234567890;
-            $test_client = new Client($id, $first_name, $last_name, $phone_number, $client_id);
+            $test_client = new Client($first_name, $last_name, $phone_number, $client_id, $id);
             $test_client->save();
 
             //Act
@@ -49,14 +49,14 @@
             $first_name = "Jim";
             $last_name = "Gonzales";
             $phone_number = 2135467764;
-            $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+            $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
             $test_stylist->save();
 
             $first_name = "John";
             $last_name = "Smith";
             $phone_number = 1234567890;
             $stylist_id = $test_stylist->getId();
-            $test_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
+            $test_client = new Client($first_name, $last_name, $phone_number, $client_id, $id);
             $test_client->save();
 
             //Act
@@ -72,14 +72,14 @@
             $first_name = "Jim";
             $last_name = "Gonzales";
             $phone_number = 2135467764;
-            $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+            $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
             $test_stylist->save();
 
             $first_name = "John";
             $last_name = "Smith";
             $phone_number = 1234567890;
             $stylist_id = $test_stylist->getId();
-            $test_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
+            $test_client = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
             $test_client->save();
 
             //Act
@@ -95,14 +95,14 @@
             $first_name = "Jim";
             $last_name = "Gonzales";
             $phone_number = 2135467764;
-            $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+            $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
             $test_stylist->save();
 
             $first_name = "John";
             $last_name = "Smith";
             $phone_number = 1234567890;
             $stylist_id = $test_stylist->getId();
-            $test_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
+            $test_client = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
 
             //Act
             $test_client->save();
@@ -118,21 +118,21 @@
             $first_name = "Jim";
             $last_name = "Gonzales";
             $phone_number = 2135467764;
-            $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+            $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
             $test_stylist->save();
 
             $first_name = "John";
             $last_name = "Smith";
             $phone_number = 1234567890;
             $stylist_id = $test_stylist->getId();
-            $test_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
+            $test_client = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
             $test_client->save();
 
             $first_name2 = "Megan";
             $last_name2 = "Johansson";
             $phone_number2 = 1147751222;
             $stylist_id = $test_stylist->getId();
-            $test_client2 = new Client($id, $first_name2, $last_name2, $phone_number2, $stylist_id);
+            $test_client2 = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
             $test_client2->save();
 
             //Act
@@ -148,21 +148,21 @@
            $first_name = "Jim";
            $last_name = "Gonzales";
            $phone_number = 2135467764;
-           $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+           $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
            $test_stylist->save();
 
            $first_name = "John";
            $last_name = "Smith";
            $phone_number = 1234567890;
            $stylist_id = $test_stylist->getId();
-           $test_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
+           $test_client = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
            $test_client->save();
 
            $first_name2 = "Megan";
            $last_name2 = "Johansson";
            $phone_number2 = 5447751122;
            $stylist_id = $test_stylist->getId();
-           $test_client2 = new Client($id, $first_name2, $last_name2, $phone_number2, $stylist_id);
+           $test_client2 = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
            $test_client->save();
 
            //Act
@@ -179,7 +179,7 @@
             $first_name = "Jim";
             $last_name = "Gonzales";
             $phone_number = 2135467764;
-            $test_stylist = new Stylist($id, $first_name, $last_name, $phone_number);
+            $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
             $test_stylist->save();
 
             $stylist_id = $test_stylist->getId();
@@ -187,13 +187,13 @@
             $first_name = "John";
             $last_name = "Smith";
             $phone_number = 1234567890;
-            $test_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
+            $test_client = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
             $test_client->save();
 
             $first_name2 = "Lucy";
             $last_name2 = "Jones";
             $phone_number2 = 1234567890;
-            $test_client2 = new Client($id, $first_name2, $last_name2, $phone_number2, $stylist_id);
+            $test_client2 = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
             $test_client2->save();
 
             //Act
@@ -209,7 +209,7 @@
             $first_name = "John";
             $last_name = "Smith";
             $phone_number = 1234567890;
-            $test_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
+            $test_client = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
             $test_client->save();
 
             $new_first_name = "Jake";
@@ -227,20 +227,23 @@
             $first_name = "John";
             $last_name = "Smith";
             $phone_number = 1234567890;
-            $test_client = new Client($id, $first_name, $last_name, $phone_number, $stylist_id);
+            $stylist_id = 1;
+            $test_client = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
             $test_client->save();
 
             $first_name2 = "Lucy";
             $last_name2 = "Jones";
             $phone_number2 = 1234567890;
-            $test_client2 = new Client($id, $first_name2, $last_name2, $phone_number2, $stylist_id);
+            $stylist_id = 1;
+            $test_client2 = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
             $test_client2->save();
 
             //Act
             $test_client->delete();
+            $result = Client::getAll();
 
             //Assert
-            $this->assertEquals([$test_client2], Client::getAll());
+            $this->assertEquals([$test_client2], $result);
         }
     }
 ?>
