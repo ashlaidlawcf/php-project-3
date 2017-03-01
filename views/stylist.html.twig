@@ -8,21 +8,19 @@
     </head>
 <body>
     <div class="container">
-        <h1 class="jumbotron">{{ stylists.getFirstName }} {{ stylists.getLastName }}</h1>
+        <h1 class="jumbotron">{{ stylist.getFirstName }} {{ stylist.getLastName }}</h1>
 
-        {% if stylists is not empty %}
-            <h4>Your clients:</h4>
-            <ul>
-                {% for client in clients %}
+        <h4>Your clients:</h4>
+            {% for client in clients %}
+                <ul>
                     <li>{{ client.getFirstName }} {{ client.getLastName }}</li>
                     <li>{{ client.getPhoneNumber }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+                </ul>
+            {% endfor %}
 
         <h4>Add a client</h4>
 
-        <form action="/stylist" method="post">
+        <form action="/stylist/{{ stylist.getId }}" method="post">
             <input name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
 
             <div class="form-group">

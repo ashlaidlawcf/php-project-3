@@ -6,6 +6,8 @@
 
     $app = new Silex\Application();
 
+    $app["debug"] = true;
+
     $server = "mysql:host=localhost:8889;dbname=hair_salon";
     $username = "root";
     $password = "root";
@@ -39,8 +41,22 @@
 
     // Stylists Page | Manager can add clients to particular stylist
 
-    $app->get("/stylists/{id}", function($id) use ($app) {
-        return $app["twig"]->render("stylist.html.twig");
+    $app->get("/stylist/{id}", function($id) use ($app) { // Stylist page, shows stylist with list of clients
+        $stylist = Stylist::find($id);
+        return $app["twig"]->render("stylist.html.twig", array("stylist" => $stylist, "clients" => $stylist->getClients()));
+    });
+
+    $app->post("/stylist/{id}", function($id) use ($app) { // Stylist page, adds client to stylist
+        $stylist = Stylist::find($id);
+
+        $first_name = filter_var($_POST["first_name"], FILTER_SANITIZE_MAGIC_QUOTES);
+        $last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_MAGIC_QUOTES);
+        $phone_number = $_POST["phone_number"];
+        $stylist_id = $stylist->getId();
+        $new_client = new Client($first_name, $last_name, $phone_number, $stylist_id);
+        $new_client->save();
+
+        return $app["twig"]->render("stylist.html.twig", array("stylist" => $stylist, "clients" => $stylist->getClients()));
     });
 
     return $app;
