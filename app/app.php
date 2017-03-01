@@ -16,32 +16,31 @@
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array("twig.path" => __DIR__."/../views"));
 
-    $app->get("/", function() use ($app) {
+    // Home Page | Manager can add stylists
+
+    $app->get("/", function() use ($app) { // Home page, shows all stylists
         return $app["twig"]->render("index.html.twig", array("stylists" => Stylist::getAll()));
     });
 
-    $app->post("/", function() use ($app) {
-        $new_stylist = new Stylist($_POST["first_name"], $_POST["last_name"], $_POST["phone_number"]);
+    $app->post("/", function() use ($app) { // Add stylist, refresh home page and show all stylists
+        $first_name = filter_var($_POST["first_name"], FILTER_SANITIZE_MAGIC_QUOTES);
+        $last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_MAGIC_QUOTES);
+        $phone_number = $_POST["phone_number"];
+        $new_stylist = new Stylist($first_name, $last_name, $phone_number);
         $new_stylist->save();
+
         return $app["twig"]->render("index.html.twig", array("stylists" => Stylist::getAll()));
     });
 
-    $app->delete("/", function() use ($app) {
+    $app->delete("/", function() use ($app) { // Delete all stylists
         Stylist::deleteAll();
         return $app["twig"]->render("index.html.twig", array("stylists" => Stylist::getAll()));
     });
 
+    // Stylists Page | Manager can add clients to particular stylist
+
     $app->get("/stylists/{id}", function($id) use ($app) {
-        $new_stylist = Stylist::find($id);
-        return $app["twig"]->render("stylist.html.twig", array("stylists" => $new_stylist, "clients" => $new_stylist->getClients()));
-    });
-
-    $app->post("/add_client", function() use ($app) {
-        $new_client = new Client($id = null, $_POST["first_name"], $_POST["last_name"], $_POST["phone_number"], $_POST["stylist_id"]);
-        $new_client->save();
-
-        $stylist = Stylist::find($_POST["stylist_id"]);
-        return $app["twig"]->render("stylist.html.twig", array("stylists" => $stylist, "clients" => $stylist->getClients()));
+        return $app["twig"]->render("stylist.html.twig");
     });
 
     return $app;

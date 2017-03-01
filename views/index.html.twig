@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="css/styles.css" rel="stylesheet" type="text/css">
+        <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/styles.css" rel="stylesheet" type="text/css">
         <meta charset="utf-8">
         <title>My Hair Salon</title>
     </head>
@@ -39,7 +39,10 @@
                     {% if stylists is not empty %}
                     <ul>
                         {% for stylist in stylists %}
-                            <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getFirstName }} {{ stylist.getLastName }}</a> | Phone Number: {{ stylist.getPhoneNumber }}</li>
+                            <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getFirstName }} {{ stylist.getLastName }}</a></li>
+                            <ul>
+                                <li>{{ stylist.getPhoneNumber }}</li>
+                            </ul>
                         {% endfor %}
                     </ul>
                     {% else %}
