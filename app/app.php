@@ -11,19 +11,22 @@
     $password = "root";
     $DB = new PDO($server, $username, $password);
 
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
     $app->register(new Silex\Provider\TwigServiceProvider(), array("twig.path" => __DIR__."/../views"));
 
     $app->get("/", function() use ($app) {
         return $app["twig"]->render("index.html.twig", array("stylists" => Stylist::getAll()));
     });
 
-    $app->post("/add_stylist", function() use ($app) {
-        $new_stylist = new Stylist($id, $_POST["first_name"], $_POST["last_name"], $_POST["phone_number"]);
+    $app->post("/", function() use ($app) {
+        $new_stylist = new Stylist($_POST["first_name"], $_POST["last_name"], $_POST["phone_number"]);
         $new_stylist->save();
         return $app["twig"]->render("index.html.twig", array("stylists" => Stylist::getAll()));
     });
 
-    $app->post("/delete_all_stylists", function() use ($app) {
+    $app->delete("/", function() use ($app) {
         Stylist::deleteAll();
         return $app["twig"]->render("index.html.twig", array("stylists" => Stylist::getAll()));
     });

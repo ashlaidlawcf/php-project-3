@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-sm-8">
                     <h1>Add a Stylist</h1>
-                    <form method="post" action="/add_stylist">
+                    <form method="post" action="/">
                         <div class="form-group">
                             <label for="first_name">First Name:</label>
                             <input type="text" name="first_name" class="form-control" required>
@@ -46,7 +46,8 @@
                     <h4>None at the moment!</h4>
                     {% endif %}
 
-                    <form method="post" action="delete_all_stylists">
+                    <form method="post" action="/">
+                        <input type="hidden" name="_method" value="delete">
                         <br><button type="submit" class="btn">Delete All Stylists</button>
                     </form>
                 </div>
