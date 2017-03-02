@@ -105,8 +105,13 @@
         return $app["twig"]->render("edit_client.html.twig", array("client" => $client, "stylist" => $stylist));
     });
 
-    $app->post("/stylist/{id}", function($id) use ($app) {
-
+    $app->patch("/stylist/{id}", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        $client =
+        $new_first_name = $_POST["first_name"];
+        $new_last_name = $_POST["last_name"];
+        $phone_number = $_POST["phone_number"];
+        $client->update();
     });
 
     return $app;

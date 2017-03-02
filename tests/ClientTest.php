@@ -187,12 +187,14 @@
             $first_name = "John";
             $last_name = "Smith";
             $phone_number = 1234567890;
+            $stylist_id = $test_stylist->getId();
             $test_client = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
             $test_client->save();
 
             $first_name2 = "Lucy";
             $last_name2 = "Jones";
             $phone_number2 = 1234567890;
+            $stylist_id = $test_stylist->getId();
             $test_client2 = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
             $test_client2->save();
 
@@ -203,22 +205,30 @@
             $this->assertEquals($test_client, $result);
         }
 
-        function testUpdateFirstName()
+        function testUpdate()
         {
             //Arrange
+            $first_name = "Jim";
+            $last_name = "Gonzales";
+            $phone_number = 2135467764;
+            $test_stylist = new Stylist($first_name, $last_name, $phone_number, $id);
+            $test_stylist->save();
+
             $first_name = "John";
             $last_name = "Smith";
             $phone_number = 1234567890;
+            $stylist_id = $test_stylist->getId();
             $test_client = new Client($first_name, $last_name, $phone_number, $stylist_id, $id);
             $test_client->save();
 
             $new_first_name = "Jake";
 
             //Act
-            $test_client->updateFirstName($new_first_name);
+            $test_client->update($new_first_name, $new_last_name, $new_phone_number);
+            $result = $test_client->getFirstName();
 
             //Assert
-            $this->assertEquals("Jake", $test_client->getFirstName());
+            $this->assertEquals("Jake", $result);
         }
 
         function testDeleteClient()

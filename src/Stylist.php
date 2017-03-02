@@ -105,8 +105,8 @@
             }
 
             if ($new_phone_number) {
-                $GLOBALS['DB']->exec("UPDATE stylists SET phone_number = {$new_number} WHERE id = {$this->getId()};");
-                $this->setPhoneNumber($new_number);
+                $GLOBALS['DB']->exec("UPDATE stylists SET phone_number = {$new_phone_number} WHERE id = {$this->getId()};");
+                $this->setPhoneNumber($new_phone_number);
             }
         }
 
