@@ -92,22 +92,22 @@
             return $found_stylist;
         }
 
-        function updateFirstName($new_first_name)
+        function update($new_first_name, $new_last_name, $new_phone_number)
         {
-            $GLOBALS['DB']->exec("UPDATE stylists SET first_name = '{$new_first_name}' WHERE id = {$this->getId()};");
-            $this->setFirstName($new_first_name);
-        }
+            if ($new_first_name) {
+                $GLOBALS['DB']->exec("UPDATE stylists SET first_name = '{$new_first_name}' WHERE id = {$this->getId()};");
+                $this->setFirstName($new_first_name);
+            }
 
-        function updateLastName($new_last_name)
-        {
-            $GLOBALS['DB']->exec("UPDATE stylists SET last_name = '{$new_last_name}' WHERE id = {$this->getId()};");
-            $this->setLastName($new_last_name);
-        }
+            if ($new_last_name) {
+                $GLOBALS['DB']->exec("UPDATE stylists SET last_name = '{$new_last_name}' WHERE id = {$this->getId()};");
+                $this->setLastName($new_last_name);
+            }
 
-        function updatePhoneNumber($new_number)
-        {
-            $GLOBALS['DB']->exec("UPDATE stylists SET phone_number = {$new_number} WHERE id = {$this->getId()};");
-            $this->setPhoneNumber($new_number);
+            if ($new_phone_number) {
+                $GLOBALS['DB']->exec("UPDATE stylists SET phone_number = {$new_number} WHERE id = {$this->getId()};");
+                $this->setPhoneNumber($new_number);
+            }
         }
 
         function delete()

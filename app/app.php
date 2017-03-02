@@ -47,10 +47,28 @@
         return $app["twig"]->render("index.html.twig", array("stylists" => Stylist::getAll()));
     });
 
+    // Edit stylist page | Manager can edit a stylist's information
+
+    $app->get("/edit/{id}", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        return $app["twig"]->render("edit_stylist.html.twig", array("stylist" => $stylist));
+    });
+
+    $app->patch("/stylist/{id}", function($id) use ($app) { // Changes stylist's information
+        $stylist = Stylist::find($id);
+        $new_first_name = $_POST["first_name"];
+        $new_last_name = $_POST["last_name"];
+        $new_phone_number = $_POST["phone_number"];
+        $stylist->update($new_first_name, $new_last_name, $new_phone_number);
+
+        return $app["twig"]->render("stylist.html.twig", array("stylist" => $stylist, "clients" => $stylist->getClients()));
+    });
+
     // Stylists Page | Manager can add clients to particular stylist
 
     $app->get("/stylist/{id}", function($id) use ($app) { // Stylist page, shows stylist with list of clients
         $stylist = Stylist::find($id);
+
         return $app["twig"]->render("stylist.html.twig", array("stylist" => $stylist, "clients" => $stylist->getClients()));
     });
 
