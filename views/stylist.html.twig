@@ -16,10 +16,7 @@
                     <li>{{ client.getFirstName }} {{ client.getLastName }}</li>
                     <li>{{ client.getPhoneNumber }}</li>
                     <li>
-                        <form action="/client/{{ client.getId }}" method="post">
-                            <input type="hidden" value="patch" name="_method">
-                            <button type="submit" class="btn">Edit Client</button>
-                        </form>
+                        <a href="/client/{{ client.getId }}"><button type="button" class="btn">Edit Client</button></a>
                     </li>
                     <li>
                         <form action="/stylist/{{ stylist.getId }}" method="post">

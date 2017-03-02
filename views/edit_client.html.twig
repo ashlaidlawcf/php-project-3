@@ -7,7 +7,27 @@
         <title>Edit Client</title>
     </head>
     <body>
+        <div class="container">
+            <h1 class="jumbotron">{{ client.getFirstName }} {{ client.getLastName }}</h1>
 
+            <h4>Edit Client</h4>
 
+            <form action="/stylist/{{ stylist.getId }}" method="post">
+                <input type="hidden" name="_method" value="patch">
+
+                <label for="first_name">First Name</label>
+                <input type="text" name="first_name" required><br><br>
+
+                <label for="first_name">Last Name</label>
+                <input type="text" name="last_name" required><br><br>
+
+                <label for="first_name">Phone Number</label>
+                <input type="text" name="phone_number" required><br><br>
+
+                <button type="submit" class="btn">Submit</button>
+            </form>
+
+            <p><a href='/'>Home</a></p>
+        </div>
     </body>
 </html>

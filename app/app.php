@@ -95,5 +95,19 @@
         return $app["twig"]->render("stylist.html.twig", array("stylist" => $stylist, "clients" => $stylist->getClients()));
     });
 
+    // Edit client page | Manager can edit client's information or delete a client
+
+    $app->get("/client/{id}", function($id) use ($app) { // Shows edit client page
+        $client = Client::find($id);
+        $stylist_id = $client->getStylistId();
+        $stylist = Stylist::find($stylist_id);
+
+        return $app["twig"]->render("edit_client.html.twig", array("client" => $client, "stylist" => $stylist));
+    });
+
+    $app->post("/stylist/{id}", function($id) use ($app) {
+
+    });
+
     return $app;
 ?>
