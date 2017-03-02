@@ -59,5 +59,15 @@
         return $app["twig"]->render("stylist.html.twig", array("stylist" => $stylist, "clients" => $stylist->getClients()));
     });
 
+    $app->delete("/stylist/{id}", function($id) use ($app) { // Stylist page, deletes individual client from stylist
+        $client_id = $_POST["delete_client"];
+        $client = Client::find($client_id);
+        $stylist_id = $client->getStylistId();
+        $stylist = Stylist::find($stylist_id);
+        $client->delete();
+
+        return $app["twig"]->render("stylist.html.twig", array("stylist" => $stylist, "clients" => $stylist->getClients()));
+    });
+
     return $app;
 ?>

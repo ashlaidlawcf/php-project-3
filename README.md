@@ -51,6 +51,7 @@ To run this web app, please follow the instructions below.
 | 7. Repeat steps 1 - 6 for the Client class | N/A | N/A |
 | 8. Add index page to allow user to add stylists to the database | Stylist | Show Stylist's information |
 | 9. Add stylists page to allow user to add clients to a stylist | Client add under a certain stylist | Client will appear under stylist
+| 10. Add option to edit clients and stylists | "John Doe" | "Jim Doe" |
 
 ## SQL Commands
 
