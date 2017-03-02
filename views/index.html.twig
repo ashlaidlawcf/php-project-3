@@ -42,6 +42,12 @@
                             <li><a href="/stylist/{{ stylist.getId }}">{{ stylist.getFirstName }} {{ stylist.getLastName }}</a></li>
                             <ul>
                                 <li>{{ stylist.getPhoneNumber }}</li>
+                                <li>
+                                    <form action="/delete_stylist" method="post">
+                                        <input type="hidden" value="delete" name="_method">
+                                        <button type="submit" class="btn" name="delete_stylist" value="{{ stylist.getId }}">Delete Stylist</button>
+                                    </form>
+                                </li>
                             </ul>
                         {% endfor %}
                     </ul>

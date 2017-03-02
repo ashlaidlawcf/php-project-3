@@ -39,6 +39,14 @@
         return $app["twig"]->render("index.html.twig", array("stylists" => Stylist::getAll()));
     });
 
+    $app->delete("/delete_stylist", function() use ($app) { // Delete individual stylist
+        $stylist_id = $_POST["delete_stylist"];
+        $stylist = Stylist::find($stylist_id);
+        $stylist->delete();
+
+        return $app["twig"]->render("index.html.twig", array("stylists" => Stylist::getAll()));
+    });
+
     // Stylists Page | Manager can add clients to particular stylist
 
     $app->get("/stylist/{id}", function($id) use ($app) { // Stylist page, shows stylist with list of clients
