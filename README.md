@@ -23,6 +23,9 @@ To run this web app, please follow the instructions below.
    * For Silex instructions: (http://silex.sensiolabs.org/).
    * For Twig instructions: (http://twig.sensiolabs.org/).
    * For PHPUnit instructions: (https://phpunit.de/).
+
+   * cd into the project directory
+   * Type "composer install" once you have added the required dependencies.
 3. Once all dependencies are installed, you must start the PHP server by navigating into the "web" folder in the project foler, and typing "php -S localhost:8000" in the Terminal.
 4. To have access to the database, you will have to install MAMP. You can read more here: (https://www.mamp.info/en/).
 5. Once MAMP is installed and the database is started, you will have to type "localhost:8888/phpmyadmin", which will take you to the database configurations.
